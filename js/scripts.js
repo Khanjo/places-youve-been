@@ -18,14 +18,17 @@ Places.prototype.addPlace = function (placeBeen) {
 window.addEventListener("load", function () {
     let form = document.querySelector("form");
     const placesYouBeen = new Places();
+    let display = document.getElementById("display");
     form.addEventListener("submit", function (event) {
         event.preventDefault();
         let loc = document.getElementById("loc").value;
         let time = document.getElementById("time").value;
         let hotel = document.getElementById("hotel").value;
         let description = document.getElementById("description").value;
-        let newPlace = Place(loc, time, hotel, description);
-        console.log(newPlace);
-    })
+        let newPlace = new Place(loc, time, hotel, description);
+        placesYouBeen.addPlace(newPlace);
 
+        form.reset();
+        console.log(placesYouBeen);
+    })
 })
